@@ -1493,6 +1493,14 @@ CONFIG_TINYUSB_DFU_MODE_NONE=y
 CONFIG_TINYUSB_NET_MODE_NONE=y
 # end of Network driver (ECM/NCM/RNDIS)
 # end of TinyUSB Stack
+
+#
+# jsmn
+#
+# CONFIG_JSMN_PARENT_LINKS is not set
+# CONFIG_JSMN_STRICT is not set
+# CONFIG_JSMN_STATIC is not set
+# end of jsmn
 # end of Component config
 
 # CONFIG_IDF_EXPERIMENTAL_FEATURES is not set

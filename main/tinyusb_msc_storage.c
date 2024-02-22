@@ -122,6 +122,7 @@ static void _mount(void)
     ESP_LOGI(TAG, "Mount storage...");
     ESP_ERROR_CHECK(tinyusb_msc_storage_mount(BASE_PATH));
 
+    /*
     // List all the files in this directory
     ESP_LOGI(TAG, "\nls command output:");
     struct dirent *d;
@@ -140,6 +141,7 @@ static void _mount(void)
     while ((d = readdir(dh)) != NULL) {
         printf("%s\n", d->d_name);
     }
+    */
     return;
 }
 
@@ -327,7 +329,9 @@ clean:
 }
 #endif  // CONFIG_ESP32_STORAGE_MEDIA_SPIFLASH
 
-const esp_partition_t* tinyusb_msc_storage(void)
+typedef void (*tinyusb_msc_storage_access_cb)(void);
+
+const esp_partition_t* tinyusb_msc_storage(tinyusb_msc_storage_access_cb _access)
 {
     ESP_LOGI(TAG, "Initializing storage...");
 
@@ -356,8 +360,8 @@ const esp_partition_t* tinyusb_msc_storage(void)
     ESP_ERROR_CHECK(tinyusb_msc_register_callback(TINYUSB_MSC_EVENT_MOUNT_CHANGED, storage_mount_changed_cb)); /* Other way to register the callback i.e. registering using separate API. If the callback had been already registered, it will be overwritten. */
 #endif  // CONFIG_ESP32_STORAGE_MEDIA_SPIFLASH
 
-    //mounted in the app by default
     _mount();
+    _access();
 
     ESP_LOGI(TAG, "USB MSC initialization");
     const tinyusb_config_t tusb_cfg = {

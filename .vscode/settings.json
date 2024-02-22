@@ -5,5 +5,17 @@
   "idf.openOcdConfigs": [
     "board/esp32s2-bridge.cfg"
   ],
-  "idf.flashType": "UART"
+  "idf.flashType": "UART",
+  "files.associations": {
+    "array": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "vector": "cpp",
+    "string_view": "cpp",
+    "format": "cpp",
+    "initializer_list": "cpp",
+    "span": "cpp",
+    "regex": "cpp"
+  }
 }
