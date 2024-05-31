@@ -1,9 +1,9 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
-  "idf.portWin": "COM7",
-  "idf.adapterTargetName": "esp32s2",
+  "idf.portWin": "COM14",
+  "idf.adapterTargetName": "esp32s3",
   "idf.openOcdConfigs": [
-    "board/esp32s2-bridge.cfg"
+    "board/esp32s3-bridge.cfg"
   ],
   "idf.flashType": "UART",
   "files.associations": {
@@ -16,6 +16,11 @@
     "format": "cpp",
     "initializer_list": "cpp",
     "span": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "si5351.h": "c",
+    "compare": "c",
+    "cstdint": "c",
+    "chrono": "c",
+    "typeinfo": "c"
   }
 }

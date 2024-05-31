@@ -5,7 +5,7 @@ if(CONFIG_ESP32_STORAGE_MEDIA_SPIFLASH)
 endif()
 
 idf_component_register(
-    SRCS "main.c" "tinyusb_msc_storage.c" "blink_led.c" "si5351.c"
+    SRCS "adf4113.c" "main.c" "tinyusb_msc_storage.c" "blink_led.c" "si5351.c" "adf4113.c"
     INCLUDE_DIRS .
     PRIV_REQUIRES "${priv_requires}"
 )

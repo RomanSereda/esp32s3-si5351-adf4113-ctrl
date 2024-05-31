@@ -1,7 +1,7 @@
 /*
- * SPDX-FileCopyrightText: 2023 Espressif Systems (Shanghai) CO LTD
+ * SPDX-FileCopyrightText: 2023-2024 Espressif Systems (Shanghai) CO LTD
  *
- * SPDX-License-Identifier: CC0-1.0
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #include "soc/soc_caps.h"
@@ -21,6 +21,9 @@
 #include "vfs_tinyusb.h"
 
 #define VFS_PATH "/dev/usb-cdc1"
+
+// idf_component_register(WHOLE_ARCHIVE) backward compatibility to IDF_v4.4
+void linker_hook(void) {};
 
 static const tusb_desc_device_t cdc_device_descriptor = {
     .bLength = sizeof(cdc_device_descriptor),
@@ -54,7 +57,6 @@ static void tinyusb_cdc_rx_callback(int itf, cdcacm_event_t *event)
  * @brief TinyUSB CDC testcase
  *
  * This is not a 'standard' testcase, as it never exits. The testcase runs in a loop where it echoes back all the data received.
- * The accompanying pytest script can be found in usb/test_app/pytest_usb_device.py
  *
  * - Init TinyUSB with standard CDC device and configuration descriptors
  * - Init 2 CDC-ACM interfaces

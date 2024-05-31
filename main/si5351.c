@@ -109,15 +109,15 @@ int32_t si5351Correction;
  * @param i2c_sda SDA pin
  * @param i2c_scl SCL pin
  */
-void si5351_init(int32_t correction) {
+void si5351_init(int32_t correction, uint8_t sda_pin, uint8_t clk_pin) {
     si5351Correction = correction;
 
     int i2c_master_port = I2C_MASTER_NUM;
 
     i2c_config_t conf = {
         .mode = I2C_MODE_MASTER,
-        .sda_io_num = 16,
-        .scl_io_num = 18,
+        .sda_io_num = sda_pin,
+        .scl_io_num = clk_pin,
         .sda_pullup_en = GPIO_PULLUP_ENABLE,
         .scl_pullup_en = GPIO_PULLUP_ENABLE,
         .master.clk_speed = I2C_FREQUENCY,
